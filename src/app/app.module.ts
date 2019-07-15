@@ -10,10 +10,7 @@ import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HelloWorldComponent,
-    UserItemComponent,
-    UserListComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
