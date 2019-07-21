@@ -8,6 +8,9 @@ import { Article } from './article/article.model';
 })
 export class AppComponent {
   articles: Article[]; // component property, saying that 'articles' is an Array of Articles
+  sortedArticles(): Article[] {
+    return this.articles.sort((a: Article, b: Article) => b.votes - a.votes);
+  }
 
   addArticle(title: HTMLInputElement, link: HTMLInputElement): boolean {
     console.log(`Adding article title: ${title.value} and link: ${link.value}`);
