@@ -16,8 +16,10 @@
 </form>
 
 <div class="ui grid posts">
-  <app-article>
-    
+  <app-article 
+    *ngFor="let article of articles"
+    [article]="article">
   </app-article>
-  <!-- if app-article is not defined in NgModule, this won't work -->
+  <!-- *ngFor="let article of articles" will iterate through the list of articles in article.model.ts and create the local variable article for each item on the list -->
+  <!-- to specify the article input on a component, we are using the [inputName]="inputValue" expression, which sets the article input to the value of the local variable article set by ngFor -->
 </div>

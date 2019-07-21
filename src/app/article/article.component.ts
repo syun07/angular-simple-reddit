@@ -1,4 +1,5 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, OnInit, HostBinding, Input } from '@angular/core';
+import { Article } from './article.model';
 
 @Component({
   selector: 'app-article',
@@ -11,26 +12,27 @@ export class ArticleComponent implements OnInit {
   // @HostBinding is imported from the package @angular/core, encapsulates the app-article markup within our component
   // allows us to configure our host element from within the component
 
-  votes: number;
-  title: string;
-  link: string;
+  @Input() article: Article;
 
   constructor() { 
-    this.title = "Angular 2";
-    this.link = "http://angular.io";
-    this.votes = 10;
-    // set default attributes
+    // article is populated by the Input now, so we don't need anything here
   }
 
-  voteUp() {
-    this.votes += 1;
+  voteUp(): boolean {
+    this.article.voteUp();
     return false;
   }
 
-  voteDown() {
-    this.votes -= 1;
-    return false
+  voteDown(): boolean {
+    this.article.voteDown();
+    return false;
   }
+
+  // instead of storing title, link, and votes properties directly on the component, created a model for Article
+  // creating  a reference to an article
+  // need to update article.component.html to get template variables from right location, {{ article.title }} etc
+
+  // created voteUp and voteDown functions in the model, which these functions point to
 
   ngOnInit() {
   }
