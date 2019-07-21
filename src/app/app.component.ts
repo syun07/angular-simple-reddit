@@ -9,6 +9,15 @@ import { Article } from './article/article.model';
 export class AppComponent {
   articles: Article[]; // component property, saying that 'articles' is an Array of Articles
 
+  addArticle(title: HTMLInputElement, link: HTMLInputElement): boolean {
+    console.log(`Adding article title: ${title.value} and link: ${link.value}`);
+    this.articles.push(new Article(title.value, link.value, 0));
+    title.value = '';
+    link.value = '';
+    return false
+    // this creates a new ARticle instance with the submitted title + url, adds it to the array of articles, and clears the input field values
+  }
+
   constructor() {
     this.articles = [
       new Article('Angular 2', 'http://angular.io', 3),
@@ -17,5 +26,4 @@ export class AppComponent {
     ]
     // populate articles array by setting this.articles in constructor
   }
-
 }
